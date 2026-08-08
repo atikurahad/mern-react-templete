@@ -42,7 +42,7 @@ export default function Circle() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 1024);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -64,79 +64,73 @@ export default function Circle() {
     activeIdx === 0 ? testimonials.length - 1 : activeIdx - 1;
   const getNextIndex = () => (activeIdx + 1) % testimonials.length;
 
-  const renderStars = (rating: number | string) => (
-    <div className="flex gap-0.5">
-      {[...Array(5)].map((_, i) => (
-        <Star
-          key={i}
-          className={`w-3 h-3 md:w-4 md:h-4 ${
-            i <
-            (typeof rating === "number" ? rating : parseInt(rating as string))
-              ? true
-              : false
-                ? "text-yellow-400 fill-yellow-400"
-                : "text-[#8F8F86] fill-[#8F8F86]"
-          }`}
-        />
-      ))}
-    </div>
-  );
+  const renderStars = (rating: number | string) => {
+    const numRating = typeof rating === "number" ? rating : parseInt(rating as string, 10);
+    return (
+      <div className="flex gap-0.5">
+        {[...Array(5)].map((_, i) => (
+          <Star
+            key={i}
+            className={`w-3 h-3 md:w-4 md:h-4 ${
+              i < numRating
+                ? "text-amber-500 fill-amber-500"
+                : "text-slate-350 fill-slate-350 dark:text-slate-700 dark:fill-slate-700"
+            }`}
+          />
+        ))}
+      </div>
+    );
+  };
+
   const getAvatarPos = (idx: number) => {
     const isActive = idx === activeIdx;
     const scaleFactor = isActive ? 1.15 : 0.75;
 
     let x, y;
     if (isActive) {
-      x = 60 + 190;
-      y = 190;
+      x = 15.625 + 49.48; // 65.105%
+      y = 49.48; // 49.48%
     } else if (idx === getNextIndex()) {
-      x = 60;
-      y = 190 + 190;
+      x = 15.625;
+      y = 49.48 + 49.48; // 98.96%
     } else {
-      x = 60;
-      y = 190 - 190;
+      x = 15.625;
+      y = 49.48 - 49.48; // 0%
     }
     return { x, y, scaleFactor };
   };
 
   return (
-    <section className="bg-[#f9f9f2] py-16 md:py-20 px-4 md:px-6 lg:px-20">
+    <section className="bg-[#f0f0f0]  py-16 md:py-20 px-4 md:px-6 lg:px-20 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-center text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
-          Trusted by Families, Schools, and Businesses
+        <h2 className="text-center text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-3">
+          What Our Users Say
         </h2>
-        <p className="text-center text-gray-500 text-sm md:text-base mb-12 max-w-3xl mx-auto">
+        <p className="text-center text-gray-500 dark:text-slate-400 text-sm md:text-base mb-12 max-w-3xl mx-auto">
           Real voices from the people making everyday sustainability possible.
         </p>
 
-        <div className="grid md:grid-cols-[300px_1fr] gap-8 md:gap-16 items-center">
+        <div className="grid lg:grid-cols-[380px_1fr] gap-12 lg:gap-16 items-center">
           {/* LEFT – ONLY 3 AVATARS VISIBLE */}
           <div
-            className="relative mx-auto"
-            style={{
-              height: `384px`,
-              width: `384px`,
-            }}
+            className="relative mx-auto w-full aspect-square max-w-[280px] md:max-w-[340px] lg:max-w-[380px]"
           >
-            {/*  Circle */}
+            {/* Circle SVG */}
             <svg
-              viewBox="0 0 300 300"
-              className="absolute inset-0 z-0"
-              width="100%"
-              height="100%"
+              viewBox="0 0 100 100"
+              className="absolute inset-0 z-0 w-full h-full"
             >
               <circle
-                cx="28"
-                cy="148"
-                r="158"
+                cx="15.625"
+                cy="49.48"
+                r="49.48"
                 fill="none"
                 stroke="#D9D9D9"
-                strokeWidth="2.8"
+                strokeWidth="0.8"
               />
             </svg>
 
             {/* Render ONLY 3 avatars */}
-            {/* FIX: Use correct variable for the indices to display */}
             {(Array.isArray(testimonials)
               ? [activeIdx, getNextIndex(), getPrevIndex()].map(
                   (idx) => idx % testimonials.length,
@@ -151,54 +145,46 @@ export default function Circle() {
                 <button
                   key={t.id}
                   onClick={() => setActiveIdx(idx)}
-                  className="absolute flex flex-col items-center transition-all duration-500"
+                  className="absolute flex flex-col items-center transition-all duration-500 cursor-pointer"
                   style={{
-                    left: x,
-                    top: y,
+                    left: `${x}%`,
+                    top: `${y}%`,
                     transform: `translate(-50%, -50%) scale(${scaleFactor})`,
                     opacity: isActive ? 1 : 0.65,
                     zIndex: isActive ? 10 : 1,
                   }}
                 >
                   <div
-                    className={`rounded-full overflow-hidden border-4 shadow-lg transition-all ${
-                      isActive ? "border-white" : "border-gray-300"
+                    className={`rounded-full overflow-hidden border-4 shadow-lg transition-all flex-shrink-0 ${
+                      isActive
+                        ? "border-white w-16 h-16 md:w-20 md:h-20"
+                        : "border-gray-300 w-12 h-12 md:w-16 md:h-16"
                     }`}
-                    style={{
-                      width: `${isActive ? 80 : 64}px`,
-                      height: `${isActive ? 80 : 64}px`,
-                    }}
                   >
                     <img
                       src={t.image}
                       alt={t.name}
-                      width={isActive ? 80 : 64}
-                      height={isActive ? 80 : 64}
                       className="w-full h-full object-cover"
                     />
                   </div>
 
                   <h4
-                    className={`mt-1 text-base font-[400] text-[#091610] transition-all ${
-                      isMobile ? "text-xs" : "text-base"
-                    }`}
-                    style={{ transform: `scale(${1 / 1.15})` }}
+                    className={`mt-1 font-semibold text-[#091610] dark:text-white transition-all text-xs md:text-sm whitespace-nowrap`}
+                    style={{ transform: `scale(${1 / scaleFactor})` }}
                   >
                     {t.name}
                   </h4>
 
                   <p
-                    className={`text-[#6B5E4C] transition-all ${
-                      isMobile ? "text-xs" : "text-sm"
-                    } mt-0.5`}
-                    style={{ transform: `scale(${1 / 1.15})` }}
+                    className={`text-[#6B5E4C] dark:text-slate-400 transition-all text-[10px] md:text-xs mt-0.5 whitespace-nowrap`}
+                    style={{ transform: `scale(${1 / scaleFactor})` }}
                   >
                     {t.role}
                   </p>
 
                   <div
                     className="mt-1"
-                    style={{ transform: `scale(${1 / 1.15})` }}
+                    style={{ transform: `scale(${1 / scaleFactor})` }}
                   >
                     {renderStars(t.rating)}
                   </div>
@@ -208,19 +194,37 @@ export default function Circle() {
           </div>
 
           {/* RIGHT – TESTIMONIAL CARDS */}
-          <div className="relative" style={{ height: `500px` }}>
-            {/* Mobile: Only Active */}
+          <div className="w-full">
             {isMobile ? (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="bg-[#f5f5f0] p-5 md:p-7 rounded-2xl max-w-xl w-full shadow-sm border border-[#e0ded7]">
-                  <p className="text-gray-800 text-base md:text-lg leading-relaxed">
-                    {testimonials[activeIdx].text}
+              /* Mobile & Tablet: Single Card with Arrows Below */
+              <div className="flex flex-col items-center gap-6 w-full max-w-xl mx-auto">
+                <div className="flex w-full min-h-[140px] p-6 justify-center items-center rounded-2xl border border-[rgba(0,0,0,0.15)] bg-[linear-gradient(96deg,rgba(218,218,209,0.50)_1.97%,rgba(145,144,116,0.25)_46.47%,rgba(235,235,235,0.50)_64.9%,rgba(116,116,111,0.10)_99.7%)] shadow-sm">
+                  <p className="text-gray-800 text-base md:text-lg leading-relaxed text-center italic">
+                    "{testimonials[activeIdx].text}"
                   </p>
+                </div>
+                
+                {/* Navigation Arrows for Mobile */}
+                <div className="flex gap-4">
+                  <button
+                    onClick={prev}
+                    className="w-10 h-10 rounded-xl border border-gray-300 bg-white hover:bg-gray-50 flex items-center justify-center shadow-sm transition-all active:scale-95 cursor-pointer"
+                    aria-label="Previous"
+                  >
+                    <ChevronLeft className="w-5 h-5 text-gray-700" />
+                  </button>
+                  <button
+                    onClick={next}
+                    className="w-10 h-10 rounded-xl border border-gray-300 bg-white hover:bg-gray-50 flex items-center justify-center shadow-sm transition-all active:scale-95 cursor-pointer"
+                    aria-label="Next"
+                  >
+                    <ChevronRight className="w-5 h-5 text-gray-700" />
+                  </button>
                 </div>
               </div>
             ) : (
-              /* Desktop: 3 Stacked Cards */
-              <>
+              /* Desktop: 3 Stacked Cards with Arrows */
+              <div className="relative w-full h-[500px]">
                 {[0, 1, 2].map((posIdx) => {
                   const offset = posIdx - 1;
                   const tIdx =
@@ -248,49 +252,41 @@ export default function Circle() {
                       }}
                     >
                       <div
-                        className="flex
-  h-[130px]
-  p-4
-  justify-center
-  items-center
-  gap-[24px]
-  rounded-[12px]
-  border border-[rgba(0,0,0,0.20)]
-  bg-[linear-gradient(96deg,rgba(218,218,209,0.50)_1.97%,rgba(145,144,116,0.25)_46.47%,rgba(235,235,235,0.50)_64.9%,rgba(116,116,111,0.10)_99.7%)]"
+                        className="flex h-[130px] p-6 justify-center items-center gap-6 rounded-xl border border-[rgba(0,0,0,0.15)] bg-[linear-gradient(96deg,rgba(218,218,209,0.50)_1.97%,rgba(145,144,116,0.25)_46.47%,rgba(235,235,235,0.50)_64.9%,rgba(116,116,111,0.10)_99.7%)] shadow-sm"
                       >
                         <p
-                          className={`leading-relaxed${
+                          className={`leading-relaxed italic ${
                             isActive
-                              ? "text-gray-800  text-base md:text-lg"
+                              ? "text-gray-800 text-base md:text-lg"
                               : "text-gray-400 text-sm md:text-base"
                           }`}
                         >
-                          {t.text}
+                          "{t.text}"
                         </p>
                       </div>
                     </div>
                   );
                 })}
-              </>
-            )}
 
-            {/* Navigation Arrows */}
-            <div className="absolute bottom-0 right-0 flex gap-3 -translate-y-6">
-              <button
-                onClick={prev}
-                className="w-9 h-9 md:w-10 md:h-10 rounded-md border border-gray-300 bg-white hover:bg-gray-50 flex items-center justify-center shadow-sm transition-all"
-                aria-label="Previous"
-              >
-                <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 text-gray-700" />
-              </button>
-              <button
-                onClick={next}
-                className="w-9 h-9 md:w-10 md:h-10 rounded-md border border-gray-300 bg-white hover:bg-gray-50 flex items-center justify-center shadow-sm transition-all"
-                aria-label="Next"
-              >
-                <ChevronRight className="w-4 h-4 md:w-5 md:h-5 text-gray-700" />
-              </button>
-            </div>
+                {/* Navigation Arrows for Desktop */}
+                <div className="absolute bottom-0 right-0 flex gap-3 -translate-y-6">
+                  <button
+                    onClick={prev}
+                    className="w-10 h-10 rounded-xl border border-gray-300 bg-white hover:bg-gray-50 flex items-center justify-center shadow-sm transition-all active:scale-95 cursor-pointer"
+                    aria-label="Previous"
+                  >
+                    <ChevronLeft className="w-5 h-5 text-gray-700" />
+                  </button>
+                  <button
+                    onClick={next}
+                    className="w-10 h-10 rounded-xl border border-gray-300 bg-white hover:bg-gray-50 flex items-center justify-center shadow-sm transition-all active:scale-95 cursor-pointer"
+                    aria-label="Next"
+                  >
+                    <ChevronRight className="w-5 h-5 text-gray-700" />
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
