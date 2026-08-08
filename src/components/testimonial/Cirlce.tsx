@@ -137,8 +137,12 @@ export default function Circle() {
 
             {/* Render ONLY 3 avatars */}
             {/* FIX: Use correct variable for the indices to display */}
-            {(Array.isArray(testimonials) ? [activeIdx, getNextIndex(), getPrevIndex()].map((idx) => idx % testimonials.length) : []).map((idx: number) => {
-       
+            {(Array.isArray(testimonials)
+              ? [activeIdx, getNextIndex(), getPrevIndex()].map(
+                  (idx) => idx % testimonials.length,
+                )
+              : []
+            ).map((idx: number) => {
               const t = testimonials[idx];
               const { x, y, scaleFactor } = getAvatarPos(idx);
               const isActive = idx === activeIdx;
@@ -161,12 +165,8 @@ export default function Circle() {
                       isActive ? "border-white" : "border-gray-300"
                     }`}
                     style={{
-                      width: `${
-                        isActive ? 80 : 64
-                      }px`,
-                      height: `${
-                        isActive ? 80 : 64
-                      }px`,
+                      width: `${isActive ? 80 : 64}px`,
+                      height: `${isActive ? 80 : 64}px`,
                     }}
                   >
                     <img
