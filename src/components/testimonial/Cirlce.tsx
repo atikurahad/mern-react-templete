@@ -74,7 +74,7 @@ export default function Circle() {
             className={`w-3 h-3 md:w-4 md:h-4 ${
               i < numRating
                 ? "text-amber-500 fill-amber-500"
-                : "text-slate-350 fill-slate-350 dark:text-slate-700 dark:fill-slate-700"
+                : "text-slate-200 fill-slate-200"
             }`}
           />
         ))}
@@ -101,12 +101,12 @@ export default function Circle() {
   };
 
   return (
-    <section className="bg-[#f0f0f0]  py-16 md:py-20 px-4 md:px-6 lg:px-20 overflow-hidden">
+    <section className="bg-white py-16 md:py-20 px-4 md:px-6 lg:px-20 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-center text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-3">
+        <h2 className="text-center text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mb-3">
           What Our Users Say
         </h2>
-        <p className="text-center text-gray-500 dark:text-slate-400 text-sm md:text-base mb-12 max-w-3xl mx-auto">
+        <p className="text-center text-slate-500 text-sm md:text-base mb-12 max-w-3xl mx-auto">
           Real voices from the people making everyday sustainability possible.
         </p>
 
@@ -125,7 +125,7 @@ export default function Circle() {
                 cy="49.48"
                 r="49.48"
                 fill="none"
-                stroke="#D9D9D9"
+                stroke="#E2E8F0"
                 strokeWidth="0.8"
               />
             </svg>
@@ -158,7 +158,7 @@ export default function Circle() {
                     className={`rounded-full overflow-hidden border-4 shadow-lg transition-all flex-shrink-0 ${
                       isActive
                         ? "border-white w-16 h-16 md:w-20 md:h-20"
-                        : "border-gray-300 w-12 h-12 md:w-16 md:h-16"
+                        : "border-slate-200 w-12 h-12 md:w-16 md:h-16"
                     }`}
                   >
                     <img
@@ -169,14 +169,14 @@ export default function Circle() {
                   </div>
 
                   <h4
-                    className={`mt-1 font-semibold text-[#091610] dark:text-white transition-all text-xs md:text-sm whitespace-nowrap`}
+                    className={`mt-1 font-semibold text-slate-900 transition-all text-xs md:text-sm whitespace-nowrap`}
                     style={{ transform: `scale(${1 / scaleFactor})` }}
                   >
                     {t.name}
                   </h4>
 
                   <p
-                    className={`text-[#6B5E4C] dark:text-slate-400 transition-all text-[10px] md:text-xs mt-0.5 whitespace-nowrap`}
+                    className={`text-slate-500 transition-all text-[10px] md:text-xs mt-0.5 whitespace-nowrap`}
                     style={{ transform: `scale(${1 / scaleFactor})` }}
                   >
                     {t.role}
@@ -198,8 +198,8 @@ export default function Circle() {
             {isMobile ? (
               /* Mobile & Tablet: Single Card with Arrows Below */
               <div className="flex flex-col items-center gap-6 w-full max-w-xl mx-auto">
-                <div className="flex w-full min-h-[140px] p-6 justify-center items-center rounded-2xl border border-[rgba(0,0,0,0.15)] bg-[linear-gradient(96deg,rgba(218,218,209,0.50)_1.97%,rgba(145,144,116,0.25)_46.47%,rgba(235,235,235,0.50)_64.9%,rgba(116,116,111,0.10)_99.7%)] shadow-sm">
-                  <p className="text-gray-800 text-base md:text-lg leading-relaxed text-center italic">
+                <div className="flex w-full min-h-[140px] p-6 justify-center items-center rounded-2xl border border-slate-200/80 bg-gradient-to-br from-white to-slate-50 shadow-sm">
+                  <p className="text-slate-700 text-base md:text-lg leading-relaxed text-center italic">
                     "{testimonials[activeIdx].text}"
                   </p>
                 </div>
@@ -208,17 +208,17 @@ export default function Circle() {
                 <div className="flex gap-4">
                   <button
                     onClick={prev}
-                    className="w-10 h-10 rounded-xl border border-gray-300 bg-white hover:bg-gray-50 flex items-center justify-center shadow-sm transition-all active:scale-95 cursor-pointer"
+                    className="w-10 h-10 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center shadow-sm transition-all active:scale-95 cursor-pointer"
                     aria-label="Previous"
                   >
-                    <ChevronLeft className="w-5 h-5 text-gray-700" />
+                    <ChevronLeft className="w-5 h-5 text-slate-700" />
                   </button>
                   <button
                     onClick={next}
-                    className="w-10 h-10 rounded-xl border border-gray-300 bg-white hover:bg-gray-50 flex items-center justify-center shadow-sm transition-all active:scale-95 cursor-pointer"
+                    className="w-10 h-10 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center shadow-sm transition-all active:scale-95 cursor-pointer"
                     aria-label="Next"
                   >
-                    <ChevronRight className="w-5 h-5 text-gray-700" />
+                    <ChevronRight className="w-5 h-5 text-slate-700" />
                   </button>
                 </div>
               </div>
@@ -252,13 +252,13 @@ export default function Circle() {
                       }}
                     >
                       <div
-                        className="flex h-[130px] p-6 justify-center items-center gap-6 rounded-xl border border-[rgba(0,0,0,0.15)] bg-[linear-gradient(96deg,rgba(218,218,209,0.50)_1.97%,rgba(145,144,116,0.25)_46.47%,rgba(235,235,235,0.50)_64.9%,rgba(116,116,111,0.10)_99.7%)] shadow-sm"
+                        className="flex h-[130px] p-6 justify-center items-center gap-6 rounded-xl border border-slate-200/80 bg-gradient-to-br from-white to-slate-50 shadow-sm"
                       >
                         <p
                           className={`leading-relaxed italic ${
                             isActive
-                              ? "text-gray-800 text-base md:text-lg"
-                              : "text-gray-400 text-sm md:text-base"
+                              ? "text-slate-700 text-base md:text-lg"
+                              : "text-slate-400 text-sm md:text-base"
                           }`}
                         >
                           "{t.text}"
@@ -272,17 +272,17 @@ export default function Circle() {
                 <div className="absolute bottom-0 right-0 flex gap-3 -translate-y-6">
                   <button
                     onClick={prev}
-                    className="w-10 h-10 rounded-xl border border-gray-300 bg-white hover:bg-gray-50 flex items-center justify-center shadow-sm transition-all active:scale-95 cursor-pointer"
+                    className="w-10 h-10 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center shadow-sm transition-all active:scale-95 cursor-pointer"
                     aria-label="Previous"
                   >
-                    <ChevronLeft className="w-5 h-5 text-gray-700" />
+                    <ChevronLeft className="w-5 h-5 text-slate-700" />
                   </button>
                   <button
                     onClick={next}
-                    className="w-10 h-10 rounded-xl border border-gray-300 bg-white hover:bg-gray-50 flex items-center justify-center shadow-sm transition-all active:scale-95 cursor-pointer"
+                    className="w-10 h-10 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center shadow-sm transition-all active:scale-95 cursor-pointer"
                     aria-label="Next"
                   >
-                    <ChevronRight className="w-5 h-5 text-gray-700" />
+                    <ChevronRight className="w-5 h-5 text-slate-700" />
                   </button>
                 </div>
               </div>

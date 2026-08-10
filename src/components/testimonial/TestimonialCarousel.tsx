@@ -91,10 +91,10 @@ export default function TestimonialCarousel({
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Outer Card with glass design */}
-      <div className="relative bg-white dark:bg-slate-900 rounded-3xl p-8 md:p-12 shadow-xl border border-slate-100 dark:border-slate-800 overflow-hidden min-h-[380px] flex flex-col justify-between">
+      <div className="relative bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-slate-100 overflow-hidden min-h-[380px] flex flex-col justify-between">
         
         {/* Large stylized quote icon in background */}
-        <div className="absolute top-8 left-8 text-indigo-500/10 dark:text-indigo-400/5 pointer-events-none">
+        <div className="absolute top-8 left-8 text-indigo-500/10 pointer-events-none">
           <Quote size={80} className="fill-current stroke-none" />
         </div>
 
@@ -118,14 +118,14 @@ export default function TestimonialCarousel({
                     className={`${
                       i < activeTestimonial.rating
                         ? "fill-amber-400 text-amber-400"
-                        : "fill-transparent text-slate-200 dark:text-slate-700"
+                        : "fill-transparent text-slate-200"
                     }`}
                   />
                 ))}
               </div>
 
               {/* Quote Text */}
-              <p className="text-xl md:text-2xl font-medium text-slate-800 dark:text-slate-200 leading-relaxed max-w-2xl italic">
+              <p className="text-xl md:text-2xl font-medium text-slate-800 leading-relaxed max-w-2xl italic">
                 "{activeTestimonial.text}"
               </p>
 
@@ -136,10 +136,10 @@ export default function TestimonialCarousel({
                   alt={activeTestimonial.name}
                   className="w-16 h-16 rounded-full object-cover ring-4 ring-indigo-500/20"
                 />
-                <h4 className="mt-4 text-lg font-bold text-slate-900 dark:text-white">
+                <h4 className="mt-4 text-lg font-bold text-slate-900">
                   {activeTestimonial.name}
                 </h4>
-                <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1">
+                <p className="text-sm font-semibold text-slate-500 mt-1">
                   {activeTestimonial.role} {activeTestimonial.company && `at ${activeTestimonial.company}`}
                 </p>
               </div>
@@ -148,13 +148,13 @@ export default function TestimonialCarousel({
         </div>
 
         {/* Carousel controls */}
-        <div className="relative z-20 flex items-center justify-between mt-8 pt-4 border-t border-slate-100 dark:border-slate-800/80">
+        <div className="relative z-20 flex items-center justify-between mt-8 pt-4 border-t border-slate-100">
           
           {/* Navigation Arrows */}
           {showArrows ? (
             <button
               onClick={handlePrev}
-              className="p-2.5 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/80 hover:text-indigo-600 dark:hover:text-indigo-400 shadow-sm transition-all active:scale-95"
+              className="p-2.5 rounded-full border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 hover:text-indigo-600 shadow-sm transition-all active:scale-95"
               aria-label="Previous testimonial"
             >
               <ChevronLeft size={20} />
@@ -170,8 +170,8 @@ export default function TestimonialCarousel({
                   onClick={() => handleDotClick(index)}
                   className={`h-2.5 rounded-full transition-all duration-300 ${
                     index === currentIndex
-                      ? "w-8 bg-indigo-500 dark:bg-indigo-400"
-                      : "w-2.5 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600"
+                      ? "w-8 bg-indigo-500"
+                      : "w-2.5 bg-slate-200 hover:bg-slate-300"
                   }`}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
@@ -182,7 +182,7 @@ export default function TestimonialCarousel({
           {showArrows ? (
             <button
               onClick={handleNext}
-              className="p-2.5 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/80 hover:text-indigo-600 dark:hover:text-indigo-400 shadow-sm transition-all active:scale-95"
+              className="p-2.5 rounded-full border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 hover:text-indigo-600 shadow-sm transition-all active:scale-95"
               aria-label="Next testimonial"
             >
               <ChevronRight size={20} />

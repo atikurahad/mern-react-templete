@@ -36,30 +36,30 @@ export default function TestimonialSpotlight({
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="relative overflow-hidden bg-slate-950 dark:bg-slate-900 border border-slate-800 rounded-3xl p-8 md:p-14 text-white shadow-2xl transition-all duration-300 min-h-[380px] flex flex-col justify-between"
+        className="relative overflow-hidden bg-white border border-slate-200/80 rounded-3xl p-8 md:p-14 text-slate-800 shadow-xl transition-all duration-300 min-h-[380px] flex flex-col justify-between"
       >
         {/* Radial Gradient spotlight glow overlay */}
         {isHovered && (
           <div
             className="absolute inset-0 pointer-events-none transition-opacity duration-300 z-0"
             style={{
-              background: `radial-gradient(400px circle at ${coords.x}px ${coords.y}px, rgba(99, 102, 241, 0.25), transparent 80%)`,
+              background: `radial-gradient(400px circle at ${coords.x}px ${coords.y}px, rgba(99, 102, 241, 0.08), transparent 80%)`,
             }}
           />
         )}
 
         {/* Decorative Grid overlay for techno-futuristic vibes */}
         <div 
-          className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
+          className="absolute inset-0 opacity-[0.015] pointer-events-none z-0"
           style={{
-            backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)",
+            backgroundImage: "radial-gradient(circle, #000 1px, transparent 1px)",
             backgroundSize: "24px 24px",
           }}
         />
 
         {/* Background stylized big quote icon */}
-        <div className="absolute top-10 right-10 text-slate-800/60 pointer-events-none z-0">
-          <Quote size={120} className="fill-slate-800/30 stroke-none" />
+        <div className="absolute top-10 right-10 text-slate-100/70 pointer-events-none z-0">
+          <Quote size={120} className="fill-slate-50/70 stroke-none" />
         </div>
 
         <div className="relative z-10 flex-grow flex flex-col justify-center">
@@ -81,14 +81,14 @@ export default function TestimonialSpotlight({
                     className={`${
                       i < activeT.rating
                         ? "fill-amber-400 text-amber-400"
-                        : "fill-transparent text-slate-700"
+                        : "fill-transparent text-slate-200"
                     }`}
                   />
                 ))}
               </div>
 
               {/* High impact quote */}
-              <p className="text-xl md:text-3xl font-medium leading-relaxed md:leading-normal text-slate-100 max-w-3xl italic">
+              <p className="text-xl md:text-3xl font-medium leading-relaxed md:leading-normal text-slate-700 max-w-3xl italic">
                 "{activeT.text}"
               </p>
 
@@ -102,8 +102,8 @@ export default function TestimonialSpotlight({
                   />
                 </div>
                 <div>
-                  <h4 className="text-lg font-bold text-white">{activeT.name}</h4>
-                  <p className="text-sm font-semibold text-indigo-400 mt-0.5">
+                  <h4 className="text-lg font-bold text-slate-900">{activeT.name}</h4>
+                  <p className="text-sm font-semibold text-indigo-500 mt-0.5">
                     {activeT.role} {activeT.company && `at ${activeT.company}`}
                   </p>
                 </div>
@@ -134,7 +134,7 @@ export default function TestimonialSpotlight({
                 src={t.image}
                 alt={t.name}
                 className={`relative w-12 h-12 md:w-14 md:h-14 rounded-full object-cover border-2 transition-all duration-300 group-hover:scale-105 cursor-pointer
-                  ${isActive ? "border-indigo-500 scale-105 ring-4 ring-indigo-500/20" : "border-slate-300 dark:border-slate-800 scale-95 opacity-70 group-hover:opacity-100"}
+                  ${isActive ? "border-indigo-500 scale-105 ring-4 ring-indigo-500/20" : "border-slate-200 scale-95 opacity-70 group-hover:opacity-100"}
                 `}
               />
             </button>

@@ -35,7 +35,7 @@ export default function TestimonialGrid({
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight"
+          className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight"
         >
           {title}
         </motion.h2>
@@ -43,7 +43,7 @@ export default function TestimonialGrid({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="mt-4 text-lg text-slate-600 dark:text-slate-400"
+          className="mt-4 text-lg text-slate-600"
         >
           {subtitle}
         </motion.p>
@@ -66,8 +66,8 @@ export default function TestimonialGrid({
               className={`relative overflow-hidden rounded-2xl p-8 flex flex-col justify-between transition-all duration-300 shadow-md hover:shadow-xl group
                 ${
                   isFeatured
-                    ? "md:col-span-2 bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-pink-500/10 dark:from-indigo-950/30 dark:via-purple-950/20 dark:to-pink-950/30 border-2 border-indigo-500/30 dark:border-indigo-500/20"
-                    : "bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800"
+                    ? "md:col-span-2 bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-pink-500/10 border-2 border-indigo-500/20"
+                    : "bg-white border border-slate-100"
                 }
               `}
             >
@@ -77,7 +77,7 @@ export default function TestimonialGrid({
               )}
 
               {/* Spotlight background effect for premium feel */}
-              <div className="absolute -right-12 -top-12 text-slate-100 dark:text-slate-800/40 opacity-50 pointer-events-none group-hover:scale-110 transition-transform duration-500">
+              <div className="absolute -right-12 -top-12 text-slate-100 opacity-50 pointer-events-none group-hover:scale-110 transition-transform duration-500">
                 <Quote size={120} className="stroke-[1]" />
               </div>
 
@@ -91,7 +91,7 @@ export default function TestimonialGrid({
                       className={`${
                         i < t.rating
                           ? "fill-amber-400 text-amber-400"
-                          : "fill-transparent text-slate-300 dark:text-slate-700"
+                          : "fill-transparent text-slate-200"
                       } transition-colors duration-300`}
                     />
                   ))}
@@ -99,7 +99,7 @@ export default function TestimonialGrid({
 
                 {/* Testimonial body text */}
                 <p 
-                  className={`text-slate-700 dark:text-slate-300 leading-relaxed font-normal
+                  className={`text-slate-700 leading-relaxed font-normal
                     ${isFeatured ? "text-lg md:text-xl" : "text-sm md:text-base"}
                   `}
                 >
@@ -108,7 +108,7 @@ export default function TestimonialGrid({
               </div>
 
               {/* Author profile section */}
-              <div className="relative z-10 flex items-center gap-4 mt-8 pt-6 border-t border-slate-100 dark:border-slate-800/80">
+              <div className="relative z-10 flex items-center gap-4 mt-8 pt-6 border-t border-slate-100">
                 <div className="relative flex-shrink-0">
                   <img
                     src={t.image}
@@ -116,14 +116,14 @@ export default function TestimonialGrid({
                     className="w-12 h-12 rounded-full object-cover ring-2 ring-indigo-500/20"
                   />
                   {isFeatured && (
-                    <span className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-indigo-500 border-2 border-white dark:border-slate-900 rounded-full" />
+                    <span className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-indigo-500 border-2 border-white rounded-full" />
                   )}
                 </div>
                 <div>
-                  <h4 className="font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  <h4 className="font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
                     {t.name}
                   </h4>
-                  <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-0.5">
+                  <p className="text-xs font-semibold text-slate-500 mt-0.5">
                     {t.role} {t.company && `at ${t.company}`}
                   </p>
                 </div>

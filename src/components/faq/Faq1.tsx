@@ -46,7 +46,7 @@ const Faq1 = () => {
                 {accordingData?.map((according, index) => (
                     <article
                         key={index}
-                        className="w-full border-b dark:border-slate-700 border-border rounded py-3"
+                        className="w-full border-b border-border rounded py-3"
                     >
                         <div
                             className="flex gap-2 cursor-pointer items-center justify-between w-full"
@@ -57,7 +57,7 @@ const Faq1 = () => {
                             </h2>
                             <p>
                                 <FaChevronDown
-                                    className={`text-[1.15rem] sm:text-[1.2rem] dark:text-slate-600 text-text transition-all duration-300 ${
+                                    className={`text-[1.15rem] sm:text-[1.2rem] text-text transition-all duration-300 ${
                                         isAccordingOpen === index &&
                                         "rotate-[180deg] !text-[#3B9DF8]"
                                     }`}
@@ -71,7 +71,7 @@ const Faq1 = () => {
                                     : "grid-rows-[0fr] opacity-0"
                             }`}
                         >
-                            <p className="text-[#424242] dark:text-[#abc2d3] text-[0.9rem] overflow-hidden">
+                            <p className="text-[#424242] text-[0.9rem] overflow-hidden">
                                 {according.description}
                             </p>
                         </div>

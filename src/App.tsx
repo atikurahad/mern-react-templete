@@ -3,6 +3,7 @@ import AnimateChartsPage from "./pages/AnimateChartsPage";
 import MarqueePage from "./pages/MarqueePage";
 import SocialLoginPage from "./pages/SocialLoginPage";
 import TestmonialsPage from "./pages/TestmonialsPage";
+import FaqPage from "./pages/FaqPage";
 import Navbar from "./shared/Navbar";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
             <Route path="/testimonials" element={<TestmonialsPage />} />
             <Route path="/marquee" element={<MarqueePage />} />
             <Route path="/social-login" element={<SocialLoginPage />} />
+            <Route path="/faq" element={<FaqPage />} />
           </Routes>
         </main>
       </div>

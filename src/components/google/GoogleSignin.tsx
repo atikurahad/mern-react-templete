@@ -2,7 +2,7 @@ function GoogleSignin() {
   return (
     <div className="grid items-center justify-center gap-4">
       {/* bordered google login button */}
-      <button className="border border-[#e5eaf2] dark:border-slate-600 dark:text-[#abc2d3] rounded-md py-2 px-4 flex items-center gap-[10px] text-[1rem] text-[#424242] hover:bg-gray-50 transition-all duration-200">
+      <button className="border border-[#e5eaf2] rounded-md py-2 px-4 flex items-center gap-[10px] text-[1rem] text-[#424242] hover:bg-gray-50 transition-all duration-200">
         <img
           src="https://i.ibb.co/dQMmB8h/download-4-removebg-preview-1.png"
           alt="google logo"
